@@ -1,5 +1,4 @@
-
-# Language Translator App
+# Translating Burkina
 
 ## Project Overview
 This application is a language translator for underrepresented African languages, such as **Tawellemmet** and **Bambara**. It uses a **Flask API backend** powered by PyTorch models, a **React.js frontend**, and **Docker** for seamless deployment.

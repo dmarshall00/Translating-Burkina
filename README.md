@@ -1,35 +1,46 @@
-# Translating Burkina
+
+# Language Translator App
 
 ## Project Overview
 This application is a language translator for underrepresented African languages, such as **Tawellemmet** and **Bambara**. It uses a **Flask API backend** powered by PyTorch models, a **React.js frontend**, and **Docker** for seamless deployment.
 
 ---
 
-## File Structure
+## File Structure (Supports Additional Languages)
 ```
 translator-app/
-├── backend/                 # Backend API & Model Training
-│   ├── app.py               # Flask API
-│   ├── train.py             # Model training
-│   ├── Dockerfile           # Docker backend configuration
-│   ├── data/                # Dataset files (CSV format)
-│   │   └── transcripts.csv  
-│   └── requirements.txt     # Backend dependencies
+├── backend/                   # Backend API & Model Training
+│   ├── app.py                 # Flask API
+│   ├── train.py               # Model training
+│   ├── Dockerfile             # Docker backend configuration
+│   ├── data/                  # Dataset corpus files
+│   │   ├── tawellemmet-en/    # Tawellemmet-English corpus
+│   │   │   ├── source.txt     # Tawellemmet sentences
+│   │   │   └── target.txt     # English translations
+│   │   ├── bambara-en/        # Bambara-English corpus
+│   │   │   ├── source.txt     # Bambara sentences
+│   │   │   └── target.txt     # English translations
+│   │   ├── [new-language]/    # Additional languages can be added here
+│   │   │   ├── source.txt     # Source sentences for new language
+│   │   │   └── target.txt     # Corresponding English translations
+│   └── requirements.txt       # Backend dependencies
 │
-├── frontend/                # React.js frontend
+├── frontend/                  # React.js frontend
 │   ├── src/                
-│   │   ├── App.js           # Main React app file
-│   │   ├── index.js         # React entry point
-│   │   └── App.css          # CSS styles
+│   │   ├── App.js             # Main React app file
+│   │   ├── index.js           # React entry point
+│   │   └── App.css            # CSS styles
 │   ├── public/
-│   │   └── index.html       # Frontend HTML entry
-│   └── Dockerfile           # Docker frontend configuration
+│   │   └── index.html         # Frontend HTML entry
+│   └── Dockerfile             # Docker frontend configuration
 │
-├── models/                  # Trained models storage
-│   └── model.bin            # Example model
+├── models/                    # Trained models storage
+│   └── tawellemmet-en/        # Tawellemmet model folder
+│   └── bambara-en/            # Bambara model folder
+│   └── [new-language]/        # Placeholder for additional language models
 │
-├── docker-compose.yml       # Docker Compose for multi-service setup
-└── README.md                # Project documentation
+├── docker-compose.yml         # Docker Compose for multi-service setup
+└── README.md                  # Project documentation
 ```
 
 ---
@@ -86,15 +97,16 @@ cd translator-app
 
 ## Usage
 1. Enter text into the **translation text box** on the React frontend.
-2. Click the **Translate** button.
-3. View the **translated text result** below.
+2. Select the desired **language pair**.
+3. Click the **Translate** button.
+4. View the **translated text result** below.
 
 ---
 
 ## Troubleshooting
 - **Port Conflicts:** Ensure ports `5000` and `3000` are not used by other services.
-- **Model Not Loading:** Ensure `models/model.bin` exists if using a pre-trained model.
-- **Dataset Missing:** Verify `backend/data/transcripts.csv` is populated with your dataset.
+- **Model Not Loading:** Ensure models are stored in `models/` after training.
+- **Dataset Missing:** Verify `backend/data/` contains proper `source.txt` and `target.txt` files.
 
 ---
 
